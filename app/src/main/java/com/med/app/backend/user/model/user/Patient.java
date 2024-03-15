@@ -1,7 +1,8 @@
-package com.med.app.backend.user.model;
+package com.med.app.backend.user.model.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 import java.util.Objects;
@@ -15,10 +16,11 @@ import java.util.Objects;
  * @author A.Antonov
  */
 @Entity
-@Table(name = "patients")
+@PrimaryKeyJoinColumn(name = "cUserId")
+@Table(name = "tPatients")
 public class Patient extends User
 {
-    @Column(name = "pin")
+    @Column(name = "cPin")
     private String pin;
 
     // TODO: Think about GP of patient

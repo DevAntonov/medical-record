@@ -1,7 +1,7 @@
 package com.med.app.backend.user.repository;
 
 
-import com.med.app.backend.user.model.User;
+import com.med.app.backend.user.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

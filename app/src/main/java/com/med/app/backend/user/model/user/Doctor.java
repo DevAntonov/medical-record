@@ -1,8 +1,9 @@
-package com.med.app.backend.user.model;
+package com.med.app.backend.user.model.user;
 
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 
@@ -14,10 +15,11 @@ import jakarta.persistence.Table;
  * @author A.Antonov
  */
 @Entity
-@Table(name = "doctors")
+@PrimaryKeyJoinColumn(name = "cUserId")
+@Table(name = "tDoctors")
 public class Doctor extends User
 {
-    @Column(name = "doctor_id")
+    @Column(name = "cDoctorId")
     private String doctorId;
 
     // TODO: Think about doctor patient connections and doctor specialty conn

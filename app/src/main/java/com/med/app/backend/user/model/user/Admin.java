@@ -1,4 +1,4 @@
-package com.med.app.backend.user.model;
+package com.med.app.backend.user.model.user;
 
 import jakarta.persistence.*;
 
@@ -12,14 +12,14 @@ import java.util.UUID;
  * @author A.Antonov
  */
 @Entity
-@Table(name = "admins")
+@Table(name = "tAdmins")
 public class Admin
 {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "cId")
     private UUID id;
-    @Column(name = "password")
+    @Column(name = "cPassword")
     private String password;
 
 

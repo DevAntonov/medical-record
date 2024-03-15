@@ -1,4 +1,4 @@
-package com.med.app.backend.user.model;
+package com.med.app.backend.user.model.user;
 
 
 import jakarta.persistence.*;
@@ -12,23 +12,23 @@ import java.util.UUID;
  * @author A.Antonov
  */
 @Entity
-@Table(name = "users")
+@Table(name = "tUsers")
 @Inheritance(strategy = InheritanceType.JOINED)
 public abstract class User
 {
     @Id
     @GeneratedValue
-    @Column(name = "id")
+    @Column(name = "cId")
     private UUID id;
-    @Column(name = "password")
+    @Column(name = "cPassword")
     private String password;
-    @Column(name = "first_name")
+    @Column(name = "cFirstName")
     private String firstName;
-    @Column(name = "last_name")
+    @Column(name = "cLastName")
     private String lastName;
-    @Column(name = "email")
+    @Column(name = "cEmail")
     private String email;
-    @Column(name = "phone")
+    @Column(name = "cPhone")
     private String phone;
 
 
