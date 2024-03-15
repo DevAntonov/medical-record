@@ -1,4 +1,4 @@
-package com.med.app.backend.user.service.api;
+package com.med.app.backend.service.api;
 
 
 /**

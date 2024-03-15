@@ -1,8 +1,8 @@
-package com.med.app.backend.user.model.record;
+package com.med.app.backend.model.record;
 
 
-import com.med.app.backend.user.model.user.Doctor;
-import com.med.app.backend.user.model.user.Patient;
+import com.med.app.backend.model.user.Doctor;
+import com.med.app.backend.model.user.Patient;
 import jakarta.persistence.*;
 
 import java.util.Date;

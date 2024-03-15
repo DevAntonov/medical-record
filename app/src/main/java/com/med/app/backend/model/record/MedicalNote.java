@@ -1,4 +1,4 @@
-package com.med.app.backend.user.model.record;
+package com.med.app.backend.model.record;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

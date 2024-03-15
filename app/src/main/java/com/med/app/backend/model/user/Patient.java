@@ -1,4 +1,4 @@
-package com.med.app.backend.user.model.user;
+package com.med.app.backend.model.user;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

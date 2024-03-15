@@ -1,4 +1,4 @@
-package com.med.app.backend.user.model.record;
+package com.med.app.backend.model.record;
 
 import jakarta.persistence.*;
 
@@ -6,15 +6,15 @@ import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tDiagnoses")
-public class Diagnosis
+@Table(name = "tMedicine")
+public class Medicine
 {
     @Id
     @GeneratedValue
     @Column(name = "cId")
     private UUID id;
-    @Column(name = "cDiagnosisId", nullable = false, unique = true, length = 6)
-    private String diagnosisId;
+    @Column(name = "cMedicineId", nullable = false, unique = true, length = 6)
+    private String medicineId;
     @Column(name = "cName", nullable = false, unique = true)
     private String name;
 
@@ -31,15 +31,15 @@ public class Diagnosis
     }
 
 
-    public String getDiagnosisId()
+    public String getMedicineId()
     {
-        return diagnosisId;
+        return medicineId;
     }
 
 
-    public void setDiagnosisId(String diagnosisId)
+    public void setMedicineId(String medicineId)
     {
-        this.diagnosisId = diagnosisId;
+        this.medicineId = medicineId;
     }
 
 
@@ -59,14 +59,14 @@ public class Diagnosis
     public boolean equals(Object o)
     {
         if (this == o) return true;
-        if (!(o instanceof Diagnosis diagnosis)) return false;
-        return Objects.equals(id, diagnosis.id) && Objects.equals(diagnosisId, diagnosis.diagnosisId) && Objects.equals(name, diagnosis.name);
+        if (!(o instanceof Medicine medicine)) return false;
+        return Objects.equals(id, medicine.id) && Objects.equals(medicineId, medicine.medicineId) && Objects.equals(name, medicine.name);
     }
 
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, diagnosisId, name);
+        return Objects.hash(id, medicineId, name);
     }
 }
