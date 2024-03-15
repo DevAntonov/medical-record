@@ -1,4 +1,4 @@
-package com.med.app.backend.repository;
+package com.med.app.backend.repository.user;
 
 
 import com.med.app.backend.model.user.User;
