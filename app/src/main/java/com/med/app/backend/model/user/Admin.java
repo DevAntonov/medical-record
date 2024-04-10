@@ -19,6 +19,8 @@ public class Admin
     @GeneratedValue
     @Column(name = "cId")
     private UUID id;
+    @Column(name = "cUsername")
+    private String username;
     @Column(name = "cPassword")
     private String password;
 
@@ -32,6 +34,18 @@ public class Admin
     public void setId(UUID id)
     {
         this.id = id;
+    }
+
+
+    public String getUsername()
+    {
+        return username;
+    }
+
+
+    public void setUsername(String username)
+    {
+        this.username = username;
     }
 
 
@@ -51,15 +65,14 @@ public class Admin
     public boolean equals(Object o)
     {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Admin admin = (Admin) o;
-        return id.equals(admin.id) && password.equals(admin.password);
+        if (!(o instanceof Admin admin)) return false;
+        return Objects.equals(id, admin.id) && Objects.equals(username, admin.username) && Objects.equals(password, admin.password);
     }
 
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(id, password);
+        return Objects.hash(id, username, password);
     }
 }
