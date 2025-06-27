@@ -1,0 +1,70 @@
+
+Assignment
+
+The project for creating a patient medical record system must implement features for:
+- Tracking the history of illnesses for each patient.
+- Recording the doctors who have examined the patient.
+- Storing information about the treatment provided.
+- Indicating whether the patient has been on sick leave and for how long.
+
+Doctors in the system must have:
+- A unique identification number, name, and specializations.
+- Each doctor can also be registered as a general practitioner (GP).
+
+Patients must have:
+- Name, EGN (Bulgarian Personal ID number).
+- A check on whether they have paid their health insurance for the past 6 months.
+- Each patient must be registered with a GP.
+
+Patients can visit any doctor on a specific date, regardless of whether it is their GP.
+
+When a patient visits a doctor:
+- The doctor diagnoses them, may prescribe treatment (medications), and may issue a sick leave for a certain number of days starting from a specific date.
+
+Each doctor must be able to see the system history of:
+- Diagnoses given,
+- Treatments prescribed,
+- Sick leave periods for the patients.
+
+The system must also provide summarized data:
+- Number of patients with a specific diagnosis.
+- Number of patients registered with each GP.
+- Number of visits to each doctor.
+
+Each patient must be able to see their own medical history.
+
+Functional Requirements
+
+The web application “Medical Record” must include at minimum the following functionalities:
+
+1. Create, read, update, delete (CRUD) for:
+   a. Doctors (with the above-described attributes),
+   b. Patients (with the above-described attributes),
+   c. Diagnoses (with the above-described attributes),
+   d. Examinations (with the above-described attributes),
+   e. Sick leaves (with the above-described attributes).
+
+2. Access permissions:
+   - Patients can view only their own medical examinations.
+   - Doctors can view information for all patients and doctors, but can only create/edit information about the examinations they have conducted.
+   - System administrators can view and edit all information in the system.
+
+3. Reports and queries:
+   a. List of patients with a specific diagnosis.
+   b. Information about the most commonly diagnosed illnesses.
+   c. List of patients who have a specific GP.
+   d. Number of patients registered with each GP.
+   e. Number of visits to each doctor.
+   f. List of visits for each patient.
+   g. List of all visits to any doctor within a given time period.
+   h. List of visits to a specific doctor within a given time period.
+   i. Information about the month with the most sick leaves issued.
+   j. Information about the doctor(s) who issued the most sick leaves.
+
+Technological Requirements
+
+You must develop a web application using Spring Boot, based on RESTful web services with a database and user interface.
+
+The application should support:
+- Creating, editing, deleting, and displaying the data described above.
+- Data validation, exception handling, testing, and user management.
