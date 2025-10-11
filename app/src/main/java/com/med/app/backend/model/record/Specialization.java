@@ -1,23 +1,28 @@
-package com.med.app.backend.model.user;
+package com.med.app.backend.model.record;
 
 
+import com.med.app.backend.model.user.Doctor;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Table(name = "tSpecialty")
-public class Specialty
+@Table(name = "tSpecializations")
+public class Specialization
 {
     @Id
     @GeneratedValue
     @Column(name = "cId")
     private UUID id;
-    @Column(name = "cSpecialtyId", unique = true, nullable = false, length = 6)
+    @Column(name = "cSpecializationId", unique = true, nullable = false, length = 6)
     private String specialtyId;
     @Column(name = "cName", unique = true, nullable = false)
     private String name;
+
+    @ManyToMany(mappedBy = "specializations")
+    private Set<Doctor> doctors;
 
 
     public UUID getId()
@@ -56,12 +61,21 @@ public class Specialty
     }
 
 
+    public Set<Doctor> getDoctors() {
+        return doctors;
+    }
+
+    public void setDoctors(Set<Doctor> doctors) {
+        this.doctors = doctors;
+    }
+
+
     @Override
     public boolean equals(Object o)
     {
         if (this == o) return true;
-        if (!(o instanceof Specialty specialty)) return false;
-        return Objects.equals(id, specialty.id) && Objects.equals(specialtyId, specialty.specialtyId) && Objects.equals(name, specialty.name);
+        if (!(o instanceof Specialization specialization)) return false;
+        return Objects.equals(id, specialization.id) && Objects.equals(specialtyId, specialization.specialtyId) && Objects.equals(name, specialization.name);
     }
 
 

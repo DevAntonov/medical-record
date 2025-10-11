@@ -1,12 +1,10 @@
 package com.med.app.backend.model.user;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.PrimaryKeyJoinColumn;
-import jakarta.persistence.Table;
-
+import com.med.app.backend.model.record.HealthInsurancePayment;
+import jakarta.persistence.*;
 import java.util.Objects;
-
+import java.util.Set;
+import java.util.UUID;
 
 /**
  * Patient class to represent Patient entity.
@@ -16,27 +14,81 @@ import java.util.Objects;
  * @author A.Antonov
  */
 @Entity
-@PrimaryKeyJoinColumn(name = "cUserId")
 @Table(name = "tPatients")
-public class Patient extends User
+public class Patient
 {
-    @Column(name = "cPin")
+    @Id
+    @GeneratedValue
+    @Column(name = "cId")
+    private UUID id;
+
+    @Column(name = "cFirstName", nullable = false)
+    private String firstName;
+
+    @Column(name = "cLastName", nullable = false)
+    private String lastName;
+
+    @Column(name = "cPin", nullable = false, unique = true)
     private String pin;
 
-    // TODO: Think about GP of patient
+    @ManyToOne
+    @JoinColumn(name = "cGeneralPractitionerId")
+    private Doctor generalPractitioner;
+
+    @OneToMany(mappedBy = "patient")
+    private Set<HealthInsurancePayment> insurancePayments;
+
     // TODO: Constructors?
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
     public String getPin()
     {
         return pin;
     }
 
-
     public void setPin(String pin)
     {
         this.pin = pin;
     }
 
+    public Doctor getGeneralPractitioner() {
+        return generalPractitioner;
+    }
+
+    public void setGeneralPractitioner(Doctor generalPractitioner) {
+        this.generalPractitioner = generalPractitioner;
+    }
+
+    public Set<HealthInsurancePayment> getInsurancePayments() {
+        return insurancePayments;
+    }
+
+    public void setInsurancePayments(Set<HealthInsurancePayment> insurancePayments) {
+        this.insurancePayments = insurancePayments;
+    }
 
     @Override
     public boolean equals(Object o)
@@ -45,13 +97,17 @@ public class Patient extends User
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Patient patient = (Patient) o;
-        return pin.equals(patient.pin);
+        return Objects.equals(id, patient.id) &&
+               Objects.equals(firstName, patient.firstName) &&
+               Objects.equals(lastName, patient.lastName) &&
+               Objects.equals(pin, patient.pin) &&
+               Objects.equals(generalPractitioner, patient.generalPractitioner) &&
+               Objects.equals(insurancePayments, patient.insurancePayments);
     }
-
 
     @Override
     public int hashCode()
     {
-        return Objects.hash(super.hashCode(), pin);
+        return Objects.hash(super.hashCode(), id, firstName, lastName, pin, generalPractitioner, insurancePayments);
     }
 }
